@@ -121,6 +121,34 @@ Subilo igual que una foto, o pegá un enlace si ya está publicado en algún
 lado. El logo se ve chico — no hace falta alta resolución, con 200×200 px
 alcanza de sobra.
 
+## Publicar cambios sin pasar por GitHub
+
+En `editor.html` hay un botón **Publicar en GitHub**, al lado de Exportar
+contenido. Sube los cambios directamente, sin copiar y pegar nada a mano.
+
+La primera vez pide un token: una clave que generás vos, con permiso
+solamente sobre este repositorio.
+
+1. Entrá a [github.com/settings/personal-access-tokens/new](https://github.com/settings/personal-access-tokens/new).
+2. En **Repository access**, elegí **Only select repositories** y
+   seleccioná `propuesta-2027`. No le des acceso a ningún otro repositorio.
+3. En **Permissions → Repository permissions → Contents**, elegí
+   **Read and write**. Es el único permiso que necesita.
+4. Ponele una fecha de vencimiento — un año está bien — y generalo.
+5. GitHub te muestra el token una sola vez. Copialo y pegalo en el cuadro
+   de **Publicar en GitHub**.
+
+Ese token es como una contraseña: quien lo tenga puede modificar este
+repositorio. Nunca queda escrito en ningún archivo — la página lo pide cada
+vez, salvo que tildes **Recordar el token en este navegador**, y en ese caso
+queda guardado solamente en tu propio navegador, nunca en GitHub. Si en algún
+momento lo perdés de vista o creés que alguien más lo tiene, entrá a
+[github.com/settings/tokens](https://github.com/settings/tokens) y
+revocalo — se genera uno nuevo en un minuto.
+
+Este botón vive únicamente en `editor.html`. La versión pública,
+`index.html`, no lo tiene ni tiene forma de tenerlo.
+
 ## Aplicación del manual de marca
 
 ### Paleta corporativa

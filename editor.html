@@ -200,6 +200,8 @@ p{margin:0 0 12px; max-width:60ch}
 .modal h3{font-family:var(--tipo-titulo); font-weight:700; font-size:20px; margin-bottom:6px}
 .modal p{font-size:14px; color:var(--tinta-suave)}
 .modal textarea{width:100%; height:230px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12px; border:1.5px solid var(--linea); border-radius:12px; padding:11px; resize:vertical}
+.modal input[type="password"]{width:100%; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:13px; border:1.5px solid var(--linea); border-radius:10px; padding:10px 12px; margin-top:4px}
+.modal code{background:var(--papel); padding:1px 5px; border-radius:5px; font-size:.92em}
 .modal .acciones{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
 
 
@@ -380,6 +382,7 @@ p{margin:0 0 12px; max-width:60ch}
     <button class="btn chico" id="btnExportar">Exportar contenido</button>
     <button class="btn chico" id="btnImportar">Importar</button>
     <button class="btn chico" id="btnReset">Restablecer</button>
+    <button class="btn chico" id="btnPublicar">Publicar en GitHub</button>
     <span class="estado" id="estado">Sin cambios</span>
   </div>
 </div>
@@ -394,6 +397,35 @@ p{margin:0 0 12px; max-width:60ch}
     <div class="acciones">
       <button class="btn" id="modalPrimario"></button>
       <button class="btn" id="modalCerrar">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<div class="velo" id="veloPublicar">
+  <div class="modal">
+    <h3>Publicar en GitHub</h3>
+    <p>
+      Sube los cambios directamente a <code>contenido.js</code>, sin pasar por
+      la página de GitHub. Para eso necesita un token: una clave que generás
+      vos, con permiso solo sobre este repositorio.
+    </p>
+    <p id="publicarPaso1">
+      <b>La primera vez</b>, creá uno en
+      <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.
+      Elegí: <i>Repository access</i> → <i>Only select repositories</i> →
+      <code>propuesta-2027</code>. <i>Permissions</i> → <i>Repository
+      permissions</i> → <i>Contents</i> → <i>Read and write</i>. Generá el
+      token y copialo — GitHub lo muestra una sola vez.
+    </p>
+    <input type="password" id="publicarToken" placeholder="Pegá el token acá (empieza con github_pat_)" autocomplete="off" spellcheck="false">
+    <label style="display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--tinta-suave); margin-top:10px; cursor:pointer">
+      <input type="checkbox" id="publicarRecordar" style="width:auto">
+      Recordar el token en este navegador (no lo hagas en una compu compartida)
+    </label>
+    <p id="publicarEstado" style="min-height:20px; font-weight:700; margin-top:10px"></p>
+    <div class="acciones">
+      <button class="btn" id="publicarBtn">Publicar cambios</button>
+      <button class="btn" id="publicarCerrar">Cerrar</button>
     </div>
   </div>
 </div>
@@ -818,6 +850,77 @@ $("#btnReset").addEventListener("click", ()=>modal({
   alConfirmar: ()=>{ datos = JSON.parse(JSON.stringify(BASE)); render(); guardar(); $("#velo").classList.remove("abierto"); }
 }));
 
+/* ---------- publicar en GitHub ----------
+   Sube contenido.js directamente vía la API de GitHub, con un token que
+   el usuario pega cada vez (o guarda él mismo, si lo tilda). El token
+   nunca se escribe en ningún archivo del repositorio. */
+const REPO_GH = "esangomez/propuesta-2027";
+const RAMA_GH = "main";
+const CLAVE_TOKEN = "propuesta-2027-token";
+
+function utf8ABase64(texto){
+  return btoa(unescape(encodeURIComponent(texto)));
+}
+
+async function publicarEnGitHub(token){
+  const base = `https://api.github.com/repos/${REPO_GH}/contents/contenido.js`;
+  const cabeceras = { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" };
+
+  const actual = await fetch(`${base}?ref=${RAMA_GH}`, { headers: cabeceras });
+  if(actual.status === 401 || actual.status === 403){
+    throw new Error("El token no es válido, venció, o no tiene permiso sobre este repositorio.");
+  }
+  if(!actual.ok) throw new Error(`No se pudo leer el archivo actual (código ${actual.status}).`);
+  const info = await actual.json();
+
+  const textoNuevo = "const BASE = " + JSON.stringify(datos, null, 2) + ";\n";
+  const resp = await fetch(base, {
+    method: "PUT",
+    headers: { ...cabeceras, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      message: "Actualizar contenido desde el editor",
+      content: utf8ABase64(textoNuevo),
+      sha: info.sha,
+      branch: RAMA_GH
+    })
+  });
+  if(!resp.ok){
+    const err = await resp.json().catch(()=>({}));
+    throw new Error(err.message || `No se pudo publicar (código ${resp.status}).`);
+  }
+}
+
+$("#btnPublicar").addEventListener("click", ()=>{
+  const guardado = localStorage.getItem(CLAVE_TOKEN);
+  if(guardado){ $("#publicarToken").value = guardado; $("#publicarRecordar").checked = true; }
+  $("#publicarEstado").textContent = "";
+  $("#publicarEstado").style.color = "";
+  $("#veloPublicar").classList.add("abierto");
+});
+$("#publicarCerrar").addEventListener("click", ()=>$("#veloPublicar").classList.remove("abierto"));
+$("#veloPublicar").addEventListener("click", e=>{ if(e.target.id==="veloPublicar") $("#veloPublicar").classList.remove("abierto"); });
+
+$("#publicarBtn").addEventListener("click", async ()=>{
+  const token = $("#publicarToken").value.trim();
+  const estadoEl = $("#publicarEstado");
+  if(!token){ estadoEl.style.color = "var(--rojo)"; estadoEl.textContent = "Pegá el token primero."; return; }
+
+  if($("#publicarRecordar").checked) localStorage.setItem(CLAVE_TOKEN, token);
+  else localStorage.removeItem(CLAVE_TOKEN);
+
+  $("#publicarBtn").disabled = true;
+  estadoEl.style.color = "";
+  estadoEl.textContent = "Publicando…";
+  try{
+    await publicarEnGitHub(token);
+    estadoEl.style.color = "var(--verde)";
+    estadoEl.textContent = "Publicado. En un par de minutos se ve en la web.";
+  }catch(e){
+    estadoEl.style.color = "var(--rojo)";
+    estadoEl.textContent = e.message || "No se pudo publicar.";
+  }
+  $("#publicarBtn").disabled = false;
+});
 
 /* ---------- fotos ----------
    Las imágenes que se suben desde el dispositivo se achican antes de
