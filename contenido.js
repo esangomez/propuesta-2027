@@ -185,7 +185,7 @@ const BASE = {
             "texto": "Las expresiones artísticas son tan diversas como las personas; por eso, durante el turno tarde se brindan los talleres de Creatividad."
           },
           {
-            "foto": "assets/fotos/robotica.jpg",
+            "foto": "assets/fotos/robotica.jpg?v=3",
             "titulo": "Robótica",
             "texto": "Resolver problemas en situaciones cotidianas mediante el uso de la tecnología es el principal objetivo de este taller, que pone en juego la programación, la robótica y la impresión 3D."
           }
