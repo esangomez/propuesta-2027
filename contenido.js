@@ -45,18 +45,22 @@ const BASE = {
     "intro": "Nuestra propuesta pedagógica se apoya en cuatro decisiones.",
     "items": [
       {
+        "foto": "assets/fotos/pedagogia-bienestar.jpg",
         "titulo": "El bienestar escolar es la base",
         "texto": "Nadie aprende bien donde no se siente cuidado. El clima de convivencia no es un tema aparte del aprendizaje: es su condición. La educación emocional es, además, un área que se enseña, con objetivos propios en cada año."
       },
       {
+        "foto": "assets/fotos/pedagogia-personalizacion.jpg",
         "titulo": "Una tarea para cada estudiante",
         "texto": "Personalizamos y adecuamos las propuestas según las particularidades de cada estudiante, teniendo siempre como objetivo los aprendizajes propios de cada año."
       },
       {
+        "foto": "assets/fotos/pedagogia-tecnologia.jpg",
         "titulo": "Tecnología con sentido",
         "texto": "Las herramientas digitales cambian las formas de enseñar y de aprender. La programación, la robótica, la impresión 3D y el aula virtual forman parte del trabajo cotidiano, no de una clase suelta."
       },
       {
+        "foto": "assets/fotos/pedagogia-aprender-haciendo.jpg",
         "titulo": "Aprender haciendo",
         "texto": "La experimentación y la vivencia son la manera de comprobar que lo aprendido sirve. Las salidas educativas, los actos escolares y las muestras artísticas son parte fundamental del año lectivo."
       }
