@@ -372,9 +372,30 @@ p{margin:0 0 12px; max-width:60ch}
     <img src="assets/isotipo.svg" alt="Isotipo del Colegio Santo Tomás">
     <div class="marca" id="marcaTop"></div>
     <button class="btn chico" id="btnImprimir">Imprimir</button>
+    <button class="btn chico" id="btnEditar">Editar</button>
   </header>
   <nav class="nav" id="nav"></nav>
   <main id="app"></main>
+  <div class="pie">
+    <button class="btn chico" id="btnExportar">Exportar contenido</button>
+    <button class="btn chico" id="btnImportar">Importar</button>
+    <button class="btn chico" id="btnReset">Restablecer</button>
+    <span class="estado" id="estado">Sin cambios</span>
+  </div>
+</div>
+
+<input type="file" id="archivoFoto" accept="image/*" hidden>
+
+<div class="velo" id="velo">
+  <div class="modal">
+    <h3 id="modalTitulo"></h3>
+    <p id="modalTexto"></p>
+    <textarea id="modalCampo" spellcheck="false"></textarea>
+    <div class="acciones">
+      <button class="btn" id="modalPrimario"></button>
+      <button class="btn" id="modalCerrar">Cerrar</button>
+    </div>
+  </div>
 </div>
 
 <!-- Todos los textos de la propuesta están en contenido.js.
@@ -384,21 +405,75 @@ p{margin:0 0 12px; max-width:60ch}
 <script>
 
 /* ============================================================
-   2. Estado
-   Esta es la versión para compartir: solo lee contenido.js, no
-   guarda nada en el navegador ni permite editar. El link para
-   modificar el contenido en vivo es editor.html.
+   2. Estado y guardado
    ============================================================ */
-let datos = BASE;
-let editando = false;
+const CLAVE = "propuesta-academica-2027";
+let datos = JSON.parse(JSON.stringify(BASE));
+let editando = false, temporizador = null;
 let nivelActivo = "primaria";
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
+/* funciona igual dentro del chat que publicado en la web */
+const almacen = {
+  async leer(){
+    if (window.storage) { const r = await window.storage.get(CLAVE); return r && r.value; }
+    return localStorage.getItem(CLAVE);
+  },
+  async escribir(v){
+    if (window.storage) return window.storage.set(CLAVE, v);
+    localStorage.setItem(CLAVE, v);
+  }
+};
+
 function leer(ruta){ return ruta.split(".").reduce((o,k)=> o==null?o:o[k], datos); }
+function escribir(ruta, valor){
+  const p = ruta.split(".");
+  const ult = p.pop();
+  p.reduce((o,k)=>o[k], datos)[ult] = valor;
+}
 function ed(ruta, tag="span", clase=""){
-  return `<${tag}${clase?` class="${clase}"`:""}>${esc(leer(ruta))}</${tag}>`;
+  return `<${tag}${clase?` class="${clase}"`:""} data-ruta="${ruta}"${editando?' contenteditable="plaintext-only"':''}>${esc(leer(ruta))}</${tag}>`;
+}
+const estado = t => $("#estado").textContent = t;
+
+function guardar(){
+  clearTimeout(temporizador);
+  temporizador = setTimeout(async ()=>{
+    estado("Guardando…");
+    try{ await almacen.escribir(JSON.stringify(datos)); estado("Guardado"); }
+    catch(e){ estado("No se pudo guardar. Exportá el contenido"); }
+  }, 500);
+}
+/* Combina lo guardado con el contenido del archivo, sección por sección.
+   Solo se aceptan claves que el archivo conoce: así una copia guardada vieja
+   no puede revivir secciones eliminadas ni pisar bloques enteros. */
+function combinar(base, guardado){
+  if(guardado === undefined) return base;
+  if(Array.isArray(base)){
+    // Igual que con los objetos: cada elemento hereda los campos nuevos que
+    // el archivo agregó (como una foto) aunque la copia guardada sea vieja.
+    // La cantidad de elementos la decide lo guardado, para respetar los que
+    // el usuario agregó o quitó con los botones + y ×.
+    if(!Array.isArray(guardado)) return guardado;
+    return guardado.map((item, i) => i < base.length ? combinar(base[i], item) : item);
+  }
+  if(typeof base !== "object" || base === null) return guardado;
+  const salida = {};
+  for(const clave of Object.keys(base)){
+    salida[clave] = clave in guardado
+      ? combinar(base[clave], guardado[clave])
+      : base[clave];
+  }
+  return salida;
+}
+
+async function cargar(){
+  try{
+    const v = await almacen.leer();
+    if(v) datos = combinar(JSON.parse(JSON.stringify(BASE)), JSON.parse(v));
+  }catch(e){}
 }
 
 /* ============================================================
@@ -658,18 +733,157 @@ function render(){
 /* ============================================================
    4. Interacción
    ============================================================ */
+document.addEventListener("input", e=>{
+  const el = e.target.closest("[data-ruta]");
+  if(!el || !editando) return;
+  escribir(el.dataset.ruta, el.textContent);
+  estado("Editando…"); guardar();
+});
+
 document.addEventListener("click", e=>{
   const nivel = e.target.closest("[data-nivel]");
   if(nivel){
     nivelActivo = nivel.dataset.nivel;
     render();
     document.getElementById("s-niveles").scrollIntoView({block:"start"});
+    return;
+  }
+  const add = e.target.closest("[data-agregar]");
+  if(add){
+    const ruta = add.dataset.agregar, arr = leer(ruta), modelo = arr[0];
+    arr.push(modelo && typeof modelo === "object"
+      ? Object.fromEntries(Object.keys(modelo).map(k=>[k,""])) : "");
+    render(); guardar();
+    const nuevo = document.querySelector(`[data-ruta^="${ruta}.${arr.length-1}"]`);
+    if(nuevo) nuevo.focus();
+    return;
+  }
+  const del = e.target.closest("[data-quitar]");
+  if(del){ leer(del.dataset.quitar).splice(Number(del.dataset.i),1); render(); guardar(); return; }
+  if(editando && e.target.closest("a.contacto")) e.preventDefault();
+});
+
+$("#btnEditar").addEventListener("click", ()=>{
+  editando = !editando;
+  document.body.classList.toggle("editando", editando);
+  $("#btnEditar").classList.toggle("activo", editando);
+  $("#btnEditar").textContent = editando ? "Listo" : "Editar";
+  render();
+  if(editando) estado("Tocá cualquier texto para cambiarlo");
+});
+$("#btnImprimir").addEventListener("click", ()=>window.print());
+
+function modal({titulo,texto,valor,boton,alConfirmar}){
+  $("#modalTitulo").textContent = titulo;
+  $("#modalTexto").textContent = texto;
+  $("#modalCampo").value = valor;
+  $("#modalPrimario").textContent = boton;
+  $("#modalPrimario").onclick = alConfirmar;
+  $("#velo").classList.add("abierto");
+}
+$("#modalCerrar").addEventListener("click", ()=>$("#velo").classList.remove("abierto"));
+$("#velo").addEventListener("click", e=>{ if(e.target.id==="velo") $("#velo").classList.remove("abierto"); });
+
+$("#btnExportar").addEventListener("click", ()=>modal({
+  titulo:"Exportar contenido",
+  texto:"Este es el contenido completo de contenido.js. Copialo y pegalo en ese archivo, reemplazando todo lo que haya, para que los cambios se publiquen.",
+  valor:"const BASE = " + JSON.stringify(datos,null,2) + ";\n", boton:"Copiar",
+  alConfirmar: async ()=>{
+    $("#modalCampo").select();
+    try{ await navigator.clipboard.writeText($("#modalCampo").value); }catch(e){ document.execCommand("copy"); }
+    $("#modalPrimario").textContent = "Copiado";
+  }
+}));
+
+$("#btnImportar").addEventListener("click", ()=>modal({
+  titulo:"Importar contenido",
+  texto:"Pegá acá un contenido exportado antes. Reemplaza lo que ves ahora.",
+  valor:"", boton:"Reemplazar contenido",
+  alConfirmar: ()=>{
+    try{
+      const crudo = $("#modalCampo").value.trim()
+        .replace(/^\s*(const|let|var)\s+BASE\s*=\s*/, "").replace(/;\s*$/, "");
+      datos = combinar(JSON.parse(JSON.stringify(BASE)), JSON.parse(crudo));
+      render(); guardar(); $("#velo").classList.remove("abierto");
+    }catch(e){
+      $("#modalTexto").textContent = "Ese texto no tiene el formato esperado. Pegalo completo, desde la primera llave hasta la última.";
+    }
+  }
+}));
+
+$("#btnReset").addEventListener("click", ()=>modal({
+  titulo:"Restablecer",
+  texto:"Vuelve al contenido original y se pierden los cambios guardados. Si querés conservarlos, cerrá y exportá primero.",
+  valor:"", boton:"Restablecer todo",
+  alConfirmar: ()=>{ datos = JSON.parse(JSON.stringify(BASE)); render(); guardar(); $("#velo").classList.remove("abierto"); }
+}));
+
+
+/* ---------- fotos ----------
+   Las imágenes que se suben desde el dispositivo se achican antes de
+   guardarse: una foto de celular pesa varios megas y el navegador solo
+   reserva unos pocos para toda la propuesta. */
+let rutaFoto = null;
+
+function comprimir(archivo, ladoMax = 1200, calidad = 0.72){
+  return new Promise((resolver, rechazar)=>{
+    const lector = new FileReader();
+    lector.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let {width:a, height:b} = img;
+        const escala = Math.min(1, ladoMax / Math.max(a, b));
+        a = Math.round(a * escala); b = Math.round(b * escala);
+        const lienzo = document.createElement("canvas");
+        lienzo.width = a; lienzo.height = b;
+        lienzo.getContext("2d").drawImage(img, 0, 0, a, b);
+        resolver(lienzo.toDataURL("image/jpeg", calidad));
+      };
+      img.onerror = () => rechazar(new Error("imagen ilegible"));
+      img.src = lector.result;
+    };
+    lector.onerror = () => rechazar(new Error("archivo ilegible"));
+    lector.readAsDataURL(archivo);
+  });
+}
+
+document.addEventListener("click", e=>{
+  const subir = e.target.closest("[data-subir]");
+  if(subir){ rutaFoto = subir.dataset.subir; $("#archivoFoto").click(); return; }
+
+  const quitarF = e.target.closest("[data-quitarfoto]");
+  if(quitarF){ escribir(quitarF.dataset.quitarfoto, ""); render(); guardar(); return; }
+
+  const enlace = e.target.closest("[data-urlfoto]");
+  if(enlace){
+    const ruta = enlace.dataset.urlfoto;
+    modal({
+      titulo:"Foto desde un enlace",
+      texto:"Pegá la dirección de una imagen que ya esté publicada en internet. También sirve la ruta de un archivo del repositorio, por ejemplo assets/fotos/patio.jpg",
+      valor: leer(ruta) && !String(leer(ruta)).startsWith("data:") ? leer(ruta) : "",
+      boton:"Usar esta foto",
+      alConfirmar: ()=>{
+        escribir(ruta, $("#modalCampo").value.trim());
+        render(); guardar(); $("#velo").classList.remove("abierto");
+      }
+    });
   }
 });
 
-$("#btnImprimir").addEventListener("click", ()=>window.print());
+$("#archivoFoto").addEventListener("change", async e=>{
+  const archivo = e.target.files[0];
+  if(!archivo || !rutaFoto) return;
+  estado("Preparando la foto…");
+  try{
+    escribir(rutaFoto, await comprimir(archivo));
+    render(); guardar();
+  }catch(err){
+    estado("Ese archivo no se pudo leer como imagen");
+  }
+  e.target.value = "";
+});
 
-render();
+(async ()=>{ await cargar(); render(); })();
 </script>
 </body>
 </html>

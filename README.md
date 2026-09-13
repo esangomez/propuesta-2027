@@ -15,6 +15,25 @@ assets/isotipo.svg    isotipo oficial, vectorial, en los cuatro colores corporat
 assets/fotos/         fotografías de la propuesta
 ```
 
+## Dos versiones de la misma propuesta
+
+Hay dos archivos HTML, y los dos muestran el mismo contenido de `contenido.js` —
+no hay que mantener el texto en dos lugares.
+
+- **`index.html`** — la versión para compartir. Es la que se abre en el link
+  público (`https://esangomez.github.io/propuesta-2027/`). No tiene botón
+  Editar ni ninguna herramienta de edición a la vista: es la que le mandás a
+  una familia, ponés en el grupo de WhatsApp del colegio, o subís a
+  santotomas.ar.
+
+- **`editor.html`** — la misma propuesta con el editor completo: el botón
+  Editar, los botones + y × para agregar o quitar ítems, y Exportar /
+  Importar / Restablecer. Se abre en
+  `https://esangomez.github.io/propuesta-2027/editor.html`. Es para vos,
+  cuando querés probar un cambio de redacción antes de escribirlo
+  directamente en `contenido.js`. Guardalo aparte en tus favoritos: no está
+  enlazado desde ningún lado de la versión pública, a propósito.
+
 ## Publicar en GitHub Pages
 
 1. Subir estos archivos a un repositorio (por ejemplo `propuesta-2026`).
