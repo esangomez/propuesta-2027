@@ -202,7 +202,7 @@ const BASE = {
             "texto": "Las expresiones artísticas son tan diversas como las personas; por eso, durante el turno tarde se brindan los talleres de Arte y Creatividad."
           },
           {
-            "foto": "",
+            "foto": "assets/fotos/robotica.jpg?v=6",
             "titulo": "Robótica",
             "texto": "Resolver problemas en situaciones cotidianas mediante el uso de la tecnología es el principal objetivo de este taller, que pone en juego la programación, la robótica y la impresión 3D."
           }
@@ -249,19 +249,28 @@ const BASE = {
         "lista": [
           "Prácticas del Lenguaje",
           "Matemática",
-          "Ciencias Naturales",
           "Ciencias Sociales",
+          "Consejo de la Ciudadanía",
+          "Ciencias Naturales",
           "Educación Física",
           "Educación Artística",
           "Inglés",
-          "Tecnología",
-          "Educación Emocional"
+          "Educación Digital"
         ]
       },
       "extracurriculares": {
-        "titulo": "Materias extracurriculares",
-        "intro": "A completar: propuesta extracurricular del Nivel Secundario.",
-        "items": []
+        "titulo": "Orientación y clubes a contraturno",
+        "intro": "Además de las materias curriculares, la escuela ofrece una orientación propia y clubes optativos a contraturno.",
+        "items": [
+          {
+            "titulo": "Economía y Administración",
+            "texto": "En Argentina, la economía forma parte del diario vivir: entender los procesos macro y microeconómicos ayuda a tomar mejores decisiones y a emprender con menos riesgo. La educación financiera y la organización de los recursos son la base para emprender o insertarse en el mundo del trabajo. Abre camino hacia carreras como Ciencias Económicas, Economía, Comercio Exterior o Marketing, y hacia el mundo laboral: diseñar un plan de negocios propio o entender cómo se organiza una empresa por dentro."
+          },
+          {
+            "titulo": "Arte + Economía",
+            "texto": "Un costado creativo de la orientación, con especializaciones en Diseño Gráfico, Diseño Audiovisual, Modelado en 3D y Marketing Digital."
+          }
+        ]
       },
       "uniforme": {
         "titulo": "Uniforme escolar",
@@ -276,6 +285,42 @@ const BASE = {
           "Buzo",
           "Remera",
           "Bermuda"
+        ]
+      },
+      "convivencia": {
+        "titulo": "Convivencia y celulares",
+        "intro": "Algunas pautas propias del Nivel Secundario.",
+        "items": [
+          "Los grupos de WhatsApp funcionan solo en modo difusión; la comunicación directa es por el teléfono de Dirección habilitado para ese fin.",
+          "Por Ley Provincial hay restricción de uso de celulares durante la jornada escolar. Los estudiantes solo pueden usarlo para comprar en el kiosco durante el recreo.",
+          "Si el estudiante trae el celular, debe entregarlo en preceptoría al ingresar, sin excepción. Ante un uso indebido, el equipo docente lo retiene y lo entrega al adulto responsable al momento del retiro, bajo acta."
+        ]
+      },
+      "perfilEstudiante": {
+        "titulo": "Nuestros estudiantes",
+        "intro": "Diez habilidades y competencias que buscamos formar a lo largo de la secundaria.",
+        "items": [
+          "Alegría: la escuela es un lugar donde todos la pasamos bien, la mayor parte del tiempo.",
+          "Curiosidad: una habilidad que se cultiva en los estudiantes y en los docentes.",
+          "Innovar: el paso siguiente a la curiosidad, producir un cambio factible en un tiempo determinado.",
+          "Experimentar: proponer nuevas formas de aprender, convivir, compartir y divertirse.",
+          "Pensamiento crítico: preguntarse y resolver problemas que puedan ayudar a los demás.",
+          "Libertad responsable: tomar decisiones asumiendo las consecuencias para uno mismo y para los otros.",
+          "Autoconocimiento: conocerse a uno mismo para poder conocer a los demás.",
+          "Agente de cambio: buscar cambiar su entorno para lograr cambiar el mundo.",
+          "Emprendedor: proponer y ejecutar distintas formas de emprender proyectos personales y sociales.",
+          "Proyecto de vida: identificar las habilidades que permitan un modelo de vida exitoso, tanto académico como laboral."
+        ]
+      },
+      "extension": {
+        "titulo": "Conocer para elegir mejor",
+        "intro": "Actividades por fuera del aula que forman parte de la propuesta de secundaria.",
+        "items": [
+          "Actividades de voluntariado en otras instituciones",
+          "Salidas educativas en el día",
+          "Convivencias con pernocte",
+          "Viajes escolares",
+          "Actividades deportivas y competitivas"
         ]
       }
     }

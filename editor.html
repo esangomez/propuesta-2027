@@ -645,6 +645,30 @@ function render(){
     </div>
   </section>
 
+  ${n.perfilEstudiante ? `
+  <section class="tinte" id="s-perfil" style="--acento:var(--violeta)">
+    <h2>${ed(rn+".perfilEstudiante.titulo")}</h2><div class="subrayado"></div>
+    ${ed(rn+".perfilEstudiante.intro","p","entrada")}
+    ${puntos(rn+".perfilEstudiante.items", n.perfilEstudiante.items)}
+    ${agregarBtn(rn+".perfilEstudiante.items","habilidad")}
+  </section>` : ""}
+
+  ${n.extension ? `
+  <section id="s-extension" style="--acento:var(--naranja)">
+    <h2>${ed(rn+".extension.titulo")}</h2><div class="subrayado"></div>
+    ${ed(rn+".extension.intro","p","entrada")}
+    ${puntos(rn+".extension.items", n.extension.items)}
+    ${agregarBtn(rn+".extension.items","actividad")}
+  </section>` : ""}
+
+  ${n.convivencia ? `
+  <section class="tinte" id="s-convivencia" style="--acento:var(--rojo)">
+    <h2>${ed(rn+".convivencia.titulo")}</h2><div class="subrayado"></div>
+    ${ed(rn+".convivencia.intro","p","entrada")}
+    ${puntos(rn+".convivencia.items", n.convivencia.items)}
+    ${agregarBtn(rn+".convivencia.items","punto")}
+  </section>` : ""}
+
   <section class="tinte" id="s-comunicacion" style="--acento:var(--verde)">
     <h2>${ed("comunicacion.titulo")}</h2><div class="subrayado"></div>
     ${ed("comunicacion.intro","p","entrada")}

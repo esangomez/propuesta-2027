@@ -121,6 +121,19 @@ Subilo igual que una foto, o pegá un enlace si ya está publicado en algún
 lado. El logo se ve chico — no hace falta alta resolución, con 200×200 px
 alcanza de sobra.
 
+## Si un cambio no se ve después de subirlo
+
+`index.html` y `editor.html` cargan `contenido.js` con un número de versión al
+final (`contenido.js?v=2`). Ese número existe para evitar que el navegador
+muestre una copia vieja guardada en caché en vez de ir a buscar la nueva —
+es el mismo truco que ya se usa en algunas fotos (`?v=3`, por ejemplo).
+
+Cada vez que `contenido.js` cambia, ese número tiene que subir en los dos
+archivos HTML (`v=2` → `v=3`, etc.). Si en algún momento un cambio de texto
+no se refleja en la web después de subirlo y de probar un refresco forzado
+(Ctrl+Shift+R o Cmd+Shift+R), lo primero a revisar es si ese número se
+actualizó.
+
 ## Publicar cambios sin pasar por GitHub
 
 En `editor.html` hay un botón **Publicar en GitHub**, al lado de Exportar
