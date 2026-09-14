@@ -646,17 +646,17 @@ function render(){
   </section>
 
   <section class="tinte" id="s-comunicacion" style="--acento:var(--verde)">
-    <h2>${ed(rn+".comunicacion.titulo")}</h2><div class="subrayado"></div>
-    ${ed(rn+".comunicacion.intro","p","entrada")}
+    <h2>${ed("comunicacion.titulo")}</h2><div class="subrayado"></div>
+    ${ed("comunicacion.intro","p","entrada")}
     <div class="plataforma-destacada">
-      ${(()=>{const src=leer(rn+".comunicacion.plataforma.logo");return src?`<img src="${esc(src)}" alt="" onerror="this.remove()">`:"";})()}
+      ${(()=>{const src=leer("comunicacion.plataforma.logo");return src?`<img src="${esc(src)}" alt="" onerror="this.remove()">`:"";})()}
       <div>
-        <b>${ed(rn+".comunicacion.plataforma.nombre")}</b>
-        ${editando?`<div class="fila-edit" style="display:flex"><button class="mini" data-subir="${rn}.comunicacion.plataforma.logo">Cambiar logo</button><button class="mini" data-urlfoto="${rn}.comunicacion.plataforma.logo">Enlace</button></div>`:""}
+        <b>${ed("comunicacion.plataforma.nombre")}</b>
+        ${editando?`<div class="fila-edit" style="display:flex"><button class="mini" data-subir="comunicacion.plataforma.logo">Cambiar logo</button><button class="mini" data-urlfoto="comunicacion.plataforma.logo">Enlace</button></div>`:""}
       </div>
     </div>
-    ${puntos(rn+".comunicacion.items", n.comunicacion.items)}
-    ${agregarBtn(rn+".comunicacion.items","punto")}
+    ${puntos("comunicacion.items", d.comunicacion.items)}
+    ${agregarBtn("comunicacion.items","punto")}
   </section>
 
   <section id="s-recursos" style="--acento:var(--naranja)">

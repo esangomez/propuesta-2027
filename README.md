@@ -1,4 +1,4 @@
-# Propuesta Académica 2027 — Colegio Santo Tomás
+# Propuesta Académica 2026 — Colegio Santo Tomás
 
 Versión web de la Propuesta Académica, pensada para leerse en el celular y para
 que el contenido se pueda editar sin tocar el código.
