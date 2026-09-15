@@ -410,7 +410,7 @@ const BASE = {
   "becas": {
     "titulo": "Becas al mérito",
     "texto": "El colegio otorga becas del 50 % de la cuota mensual a estudiantes de destacada trayectoria académica, tanto en primaria como en secundaria. No se evalúa la situación económica de la familia: es un reconocimiento al desempeño del estudiante.",
-    "nota": "Es un beneficio con cupo limitado, sujeto a requisitos, y se renueva cada ciclo lectivo. Consultá en Dirección los requisitos y el cronograma de postulación."
+    "nota": "Es un beneficio con cupo limitado, sujeto a requisitos, y se renueva cada ciclo lectivo. Consultá en Administración los requisitos y el cronograma de postulación."
   },
   "docs": {
     "titulo": "Documentación a presentar",
