@@ -253,7 +253,7 @@ const BASE = {
       },
       "curriculares": {
         "titulo": "Materias curriculares",
-        "intro": "Las áreas obligatorias del Nivel Secundario, según el año.",
+        "intro": "Las áreas obligatorias del Nivel Secundario en 1er año",
         "anios": [
           {
             "nombre": "1er año",
@@ -264,7 +264,7 @@ const BASE = {
               "Construcción de la Ciudadanía",
               "Ciencias Naturales",
               "Educación Física",
-              "Educación Artística",
+              "Educación Artística - Artes Visuales",
               "Inglés",
               "Educación Digital"
             ]
@@ -274,13 +274,15 @@ const BASE = {
             "lista": [
               "Prácticas del Lenguaje",
               "Matemática",
-              "Ciencias Sociales",
+              "Historia",
               "Construcción de la Ciudadanía",
-              "Ciencias Naturales",
+              "Geografía",
               "Educación Física",
-              "Educación Artística",
+              "Educación Artística - Artes Visuales",
               "Inglés",
-              "Educación Digital"
+              "Educación Digital",
+              "Biología",
+              "Físico-Química"
             ]
           }
         ]
@@ -319,7 +321,8 @@ const BASE = {
           "Campera",
           "Buzo",
           "Remera",
-          "Bermuda"
+          "Bermuda",
+          "Pollera Pantalón"
         ]
       },
       "convivencia": {
@@ -378,7 +381,7 @@ const BASE = {
   "valores": {
     "titulo": "Aranceles",
     "intro": [
-      "El precio mensual del servicio es único e incluye la jornada del turno mañana y del turno tarde, de 8 a 15hs.",
+      "El precio mensual del servicio es único e incluye la educación Curricular y Extracurricular.",
       "Todos los valores expresados son mensuales, con vencimiento el día 10 de cada mes."
     ],
     "puntos": [
