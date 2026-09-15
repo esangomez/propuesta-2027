@@ -56,7 +56,7 @@ body{
   padding:9px 14px; background:rgba(255,255,255,.96); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--linea);
 }
-.barra img{height:34px; width:auto; flex:0 0 auto}
+.barra img{width:36px; height:36px; flex:0 0 auto}
 .barra .marca{flex:1; min-width:0; line-height:1.1}
 .barra .marca b{font-family:var(--tipo-logo); font-weight:800; font-size:14.5px; color:var(--azul); display:block; letter-spacing:-.01em}
 .barra .marca span{font-size:11.5px; color:var(--tinta-suave)}
@@ -84,7 +84,7 @@ body{
 .portada{position:relative; padding:34px 22px 38px; background:var(--papel); overflow:hidden}
 .portada .piezas{position:absolute; right:-52px; top:-42px; width:210px; opacity:.09; pointer-events:none}
 .portada > *:not(.piezas){position:relative; z-index:1}
-.portada .sello{width:104px; height:104px; display:block; margin-bottom:20px}
+.portada .sello{width:auto; height:60px; display:block; margin-bottom:20px}
 .portada h1{
   font-family:var(--tipo-titulo); font-weight:900; font-size:clamp(40px,12vw,62px);
   line-height:.95; letter-spacing:-.03em; margin:0; color:var(--azul);
@@ -336,7 +336,7 @@ p{margin:0 0 12px; max-width:60ch}
   }
   .portada h1{grid-column:1; grid-row:1; font-size:64px}
   .portada .anio{grid-column:1; grid-row:2; font-size:96px}
-  .portada .sello{grid-column:1; grid-row:3; width:104px; height:104px; margin:18px 0 0}
+  .portada .sello{grid-column:1; grid-row:3; width:auto; height:70px; margin:18px 0 0}
   .portada .mosaico{grid-column:1; grid-row:4}
   .portada .piezas{width:300px; right:-80px; top:-70px}
 
@@ -372,7 +372,7 @@ p{margin:0 0 12px; max-width:60ch}
 
 <div id="doc">
   <header class="barra">
-    <img src="assets/logos/logo-colegio.png" alt="Colegio Santo Tomás">
+    <img src="assets/isotipo.svg" alt="Isotipo del Colegio Santo Tomás">
     <div class="marca" id="marcaTop"></div>
     <button class="btn chico" id="btnEditar">Editar</button>
   </header>
@@ -554,7 +554,7 @@ function render(){
   const portada = `
   <div class="portada">
     <img class="piezas" src="assets/isotipo.svg" alt="">
-    <img class="sello" src="assets/isotipo.svg" alt="Isotipo del Colegio Santo Tomás">
+    <img class="sello" src="assets/logos/logo-colegio.png" alt="Colegio Santo Tomás">
     <h1>${ed("titulo","span")}</h1>
     <div class="anio">${ed("anio","span")}</div>
     ${marco("fotoPortada")}
