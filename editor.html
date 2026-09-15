@@ -737,6 +737,14 @@ function render(){
     </div>
   </section>
 
+  <section id="s-becas" style="--acento:var(--rojo)">
+    <div class="destacado">
+      ${ed("becas.titulo","h3")}
+      ${ed("becas.texto","p")}
+      <p style="font-size:13.5px; opacity:.85; margin-bottom:0">${ed("becas.nota")}</p>
+    </div>
+  </section>
+
   <section class="tinte" id="s-docs" style="--acento:var(--violeta)">
     <h2>${ed("docs.titulo")}</h2><div class="subrayado"></div>
     ${puntos("docs.items", d.docs.items)}
