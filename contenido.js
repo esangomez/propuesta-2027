@@ -240,17 +240,17 @@ const BASE = {
         "destacado": "Jornada completa 8 horas, de 10 a 18hs o Jornada Curricular de 5 horas, de 13 a 18hs.",
         "aclaracion": "Los estudiantes podrán optar por:\nUna jornada completa de 8 horas, de 10 a 18hs, tres veces a la semana.\nLa jornada obligatoria de Nivel Secundario, de 12:30 a 18hs.",
         "parrafos": [
-          "A completar: cómo se organiza el día en el Nivel Secundario."
+          "La propuesta de Nivel Secundario del Colegio Santo Tomás está orientada a una formación integral del estudiante con una orientación en el área de Economía y Administración, y una especialización en Artes Visuales y Tecnología."
         ]
       },
       "curriculares": {
         "titulo": "Materias curriculares",
-        "intro": "Las áreas obligatorias del Nivel Secundario.",
+        "intro": "Las áreas obligatorias del Nivel Secundario en 1er año",
         "lista": [
           "Prácticas del Lenguaje",
           "Matemática",
           "Ciencias Sociales",
-          "Consejo de la Ciudadanía",
+          "Construcción de la Ciudadanía",
           "Ciencias Naturales",
           "Educación Física",
           "Educación Artística",
@@ -263,12 +263,20 @@ const BASE = {
         "intro": "Además de las materias curriculares, la escuela ofrece una orientación propia y clubes optativos a contraturno.",
         "items": [
           {
-            "titulo": "Economía y Administración",
-            "texto": "En Argentina, la economía forma parte del diario vivir: entender los procesos macro y microeconómicos ayuda a tomar mejores decisiones y a emprender con menos riesgo. La educación financiera y la organización de los recursos son la base para emprender o insertarse en el mundo del trabajo. Abre camino hacia carreras como Ciencias Económicas, Economía, Comercio Exterior o Marketing, y hacia el mundo laboral: diseñar un plan de negocios propio o entender cómo se organiza una empresa por dentro."
+            "titulo": "Diseño e Impresión en 3D",
+            "texto": "Durante el taller, los alumnos aprenderán el ciclo completo de producción: comenzarán con el modelado tridimensional en computadora, utilizarán software específico para procesar y configurar sus diseños (laminado), y finalmente operarán los equipos para materializar sus piezas."
           },
           {
-            "titulo": "Arte + Economía",
-            "texto": "Un costado creativo de la orientación, con especializaciones en Diseño Gráfico, Diseño Audiovisual, Modelado en 3D y Marketing Digital."
+            "titulo": "Artes Visuales y Artes Dramáticas",
+            "texto": "El taller propone un cruce entre la producción visual y la interpretación escénica. Los estudiantes trabajarán en dinámicas corporales, improvisación y construcción de personajes, al mismo tiempo que desarrollarán proyectos estéticos que acompañen esas narrativas, como el diseño escenográfico o la composición visual."
+          },
+          {
+            "titulo": "Marketing Digital",
+            "texto": "A través de esta materia, buscamos que los jóvenes dejen de ser únicamente espectadores de las plataformas digitales para convertirse en comunicadores críticos, capaces de planificar estrategias, crear contenido visual y textual, y comprender las lógicas detrás de los entornos digitales actuales. Se trata de una formación práctica y directamente aplicable al mundo profesional."
+          },
+          {
+            "titulo": "Robótica",
+            "texto": "La robótica ofrece a los jóvenes un entorno donde el error es parte del proceso de diseño, preparándolos con habilidades fundamentales tanto para sus estudios superiores como para los desafíos del mundo profesional actual."
           }
         ]
       },
@@ -291,9 +299,9 @@ const BASE = {
         "titulo": "Convivencia y celulares",
         "intro": "Algunas pautas propias del Nivel Secundario.",
         "items": [
-          "Los grupos de WhatsApp funcionan solo en modo difusión; la comunicación directa es por el teléfono de Dirección habilitado para ese fin.",
+          "El Consejo Institucional de Conviencia genera las pautas para las diversas situaciones referidas a la convencia de nuestros estudiantes.",
           "Por Ley Provincial hay restricción de uso de celulares durante la jornada escolar. Los estudiantes solo pueden usarlo para comprar en el kiosco durante el recreo.",
-          "Si el estudiante trae el celular, debe entregarlo en preceptoría al ingresar, sin excepción. Ante un uso indebido, el equipo docente lo retiene y lo entrega al adulto responsable al momento del retiro, bajo acta."
+          "Fomentamos la participación estudiantil por medio del Cuerpo de Delegados. Creemos que los estudiantes de Nivel Secundario tienen voz y voto."
         ]
       },
       "perfilEstudiante": {
@@ -327,7 +335,7 @@ const BASE = {
   },
   "comedor": {
     "titulo": "Comedor escolar",
-    "intro": "El comedor transcurre de 12 a 12:45hs, entre la jornada curricular del turno mañana y las materias extracurriculares del turno tarde. Los niños y niñas pueden:",
+    "intro": "El comedor transcurre de 12 a 12:30hs, entre la jornada extracurricular del Turno  Mañana y la jornada curricular del Turno Tarde.",
     "items": [
       "Traer su vianda al ingresar a la escuela, que será servida caliente al momento del almuerzo.",
       "Adquirir el servicio de vianda escolar que ofrece el kiosco de la escuela."
