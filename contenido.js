@@ -73,17 +73,17 @@ const BASE = {
       {
         "foto": "assets/fotos/recursos-aula.jpg",
         "titulo": "En cada aula",
-        "texto": "Televisor de 50 pulgadas, pizzarrones blancos, y mobiliario escolar moderno."
+        "texto": "Televisor de 50 pulgadas, pizarras blancas, mesas trapezoidales y bibliotecas montessori para el aula."
       },
       {
         "foto": "assets/fotos/recursos-digital.jpg",
         "titulo": "Equipamiento digital",
-        "texto": "Notebooks para el trabajo en clase y Google Classroom como aula virtual, donde quedan las consignas y las entregas."
+        "texto": "Notebooks para el trabajo en clase y Google Classroom como aula virtual, donde quedan las consignas, las tareas y las entregas."
       },
       {
         "foto": "assets/fotos/recursos-robotica-3d.jpg",
         "titulo": "Robótica e impresión 3D",
-        "texto": "Kits de robótica del programa Smart Team e impresora 3D: los estudiantes programan, diseñan e imprimen sus propios objetos."
+        "texto": "Kits de robótica del programa Smart Team e impresora 3D: los estudiantes programan, diseñan e imprimen sus propios objetos con nuestras impresoras 3D."
       },
       {
         "foto": "assets/fotos/recursos-experimentar.jpg",
