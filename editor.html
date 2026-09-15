@@ -278,7 +278,7 @@ p{margin:0 0 12px; max-width:60ch}
   letter-spacing:-.03em; margin:0 0 8px;
 }
 @media (min-width:960px){ .caja-arancel .monto{font-size:60px} }
-.tira-fotos{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px}
+.tira-fotos{display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:18px}
 .tira-fotos .marco{margin:0}
 .item.con-foto{flex-direction:column; gap:0}
 .item.con-foto .cuerpo{width:100%}
@@ -314,6 +314,7 @@ p{margin:0 0 12px; max-width:60ch}
    sin que las líneas de texto se vuelvan ilegibles.
    ========================================================== */
 @media (min-width:700px){
+  .tira-fotos{grid-template-columns:1fr 1fr}
   section{padding:44px 40px 46px}
   .portada{padding:48px 40px 50px}
   h2{font-size:32px}
@@ -657,6 +658,7 @@ function render(){
     ${ed(rn+".perfilEstudiante.intro","p","entrada")}
     ${puntos(rn+".perfilEstudiante.items", n.perfilEstudiante.items)}
     ${agregarBtn(rn+".perfilEstudiante.items","habilidad")}
+    ${marco(rn+".perfilEstudiante.foto")}
   </section>` : ""}
 
   ${n.extension ? `

@@ -317,7 +317,8 @@ const BASE = {
         "titulo": "Uniforme escolar",
         "texto": "El uniforme forma parte de nuestra identidad como escuela, además de ser de excelente calidad, con un diseño moderno y cómodo para que los niños y niñas realicen actividades escolares.",
         "fotos": [
-          "assets/fotos/uniforme-secundaria-1.jpg"
+          "assets/fotos/uniforme-secundaria-1.jpg",
+          "assets/fotos/uniforme-secundaria-2.jpg"
         ],
         "prendas": [
           "Chomba",
@@ -353,7 +354,8 @@ const BASE = {
           "Agente de cambio: buscar cambiar su entorno para lograr cambiar el mundo.",
           "Emprendedor: proponer y ejecutar distintas formas de emprender proyectos personales y sociales.",
           "Proyecto de vida: identificar las habilidades que permitan un modelo de vida exitoso, tanto académico como laboral."
-        ]
+        ],
+        "foto": "assets/fotos/perfil-estudiantes.jpg"
       },
       "extension": {
         "titulo": "Conocer para elegir mejor",
