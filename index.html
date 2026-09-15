@@ -518,18 +518,24 @@ function render(){
     ${parrafos(rn+".horario.parrafos", n.horario.parrafos)}
     ${agregarBtn(rn+".horario.parrafos","párrafo")}
     <div style="--acento:var(--verde)">
-      <h2 style="margin-top:30px">${ed("comedor.titulo")}</h2><div class="subrayado"></div>
-      ${ed("comedor.intro","p")}
-      ${puntos("comedor.items", d.comedor.items)}
-      ${agregarBtn("comedor.items","opción")}
+      <h2 style="margin-top:30px">${ed(rn+".comedor.titulo")}</h2><div class="subrayado"></div>
+      ${ed(rn+".comedor.intro","p")}
+      ${puntos(rn+".comedor.items", n.comedor.items)}
+      ${agregarBtn(rn+".comedor.items","opción")}
     </div>
   </section>
 
   <section id="s-materias" style="--acento:var(--celeste)">
     <h2>${ed(rn+".curriculares.titulo")}</h2><div class="subrayado"></div>
     ${ed(rn+".curriculares.intro","p","entrada")}
-    ${puntos(rn+".curriculares.lista", n.curriculares.lista)}
-    ${agregarBtn(rn+".curriculares.lista","materia")}
+    ${n.curriculares.anios ? n.curriculares.anios.map((anio,ai)=>`
+      <h3 style="margin-top:${ai?18:0}px">${esc(anio.nombre)}</h3>
+      ${puntos(rn+".curriculares.anios."+ai+".lista", anio.lista)}
+      ${agregarBtn(rn+".curriculares.anios."+ai+".lista","materia")}
+    `).join("") : `
+      ${puntos(rn+".curriculares.lista", n.curriculares.lista)}
+      ${agregarBtn(rn+".curriculares.lista","materia")}
+    `}
     <div style="--acento:var(--rojo)">
       <h2 style="margin-top:30px">${ed(rn+".extracurriculares.titulo")}</h2><div class="subrayado"></div>
       ${ed(rn+".extracurriculares.intro","p","entrada")}

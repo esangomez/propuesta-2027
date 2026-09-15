@@ -223,6 +223,14 @@ const BASE = {
           "Remera",
           "Bermuda"
         ]
+      },
+      "comedor": {
+        "titulo": "Comedor escolar",
+        "intro": "El comedor transcurre de 12 a 13hs, entre la jornada curricular del turno mañana y las materias extracurriculares del turno tarde.",
+        "items": [
+          "Traer su vianda al ingresar a la escuela, que será servida caliente al momento del almuerzo.",
+          "Adquirir el servicio de vianda escolar que ofrece el kiosco de la escuela."
+        ]
       }
     },
     "secundaria": {
@@ -245,17 +253,36 @@ const BASE = {
       },
       "curriculares": {
         "titulo": "Materias curriculares",
-        "intro": "Las áreas obligatorias del Nivel Secundario en 1er año",
-        "lista": [
-          "Prácticas del Lenguaje",
-          "Matemática",
-          "Ciencias Sociales",
-          "Construcción de la Ciudadanía",
-          "Ciencias Naturales",
-          "Educación Física",
-          "Educación Artística",
-          "Inglés",
-          "Educación Digital"
+        "intro": "Las áreas obligatorias del Nivel Secundario, según el año.",
+        "anios": [
+          {
+            "nombre": "1er año",
+            "lista": [
+              "Prácticas del Lenguaje",
+              "Matemática",
+              "Ciencias Sociales",
+              "Construcción de la Ciudadanía",
+              "Ciencias Naturales",
+              "Educación Física",
+              "Educación Artística",
+              "Inglés",
+              "Educación Digital"
+            ]
+          },
+          {
+            "nombre": "2do año",
+            "lista": [
+              "Prácticas del Lenguaje",
+              "Matemática",
+              "Ciencias Sociales",
+              "Construcción de la Ciudadanía",
+              "Ciencias Naturales",
+              "Educación Física",
+              "Educación Artística",
+              "Inglés",
+              "Educación Digital"
+            ]
+          }
         ]
       },
       "extracurriculares": {
@@ -330,16 +357,16 @@ const BASE = {
           "Viajes escolares",
           "Actividades deportivas y competitivas"
         ]
+      },
+      "comedor": {
+        "titulo": "Comedor escolar",
+        "intro": "El comedor transcurre de 12 a 12:30hs, entre la jornada extracurricular del Turno  Mañana y la jornada curricular del Turno Tarde.",
+        "items": [
+          "Traer su vianda al ingresar a la escuela, que será servida caliente al momento del almuerzo.",
+          "Adquirir el servicio de vianda escolar que ofrece el kiosco de la escuela."
+        ]
       }
     }
-  },
-  "comedor": {
-    "titulo": "Comedor escolar",
-    "intro": "El comedor transcurre de 12 a 12:30hs, entre la jornada extracurricular del Turno  Mañana y la jornada curricular del Turno Tarde.",
-    "items": [
-      "Traer su vianda al ingresar a la escuela, que será servida caliente al momento del almuerzo.",
-      "Adquirir el servicio de vianda escolar que ofrece el kiosco de la escuela."
-    ]
   },
   "materiales": {
     "titulo": "Materiales escolares",
