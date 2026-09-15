@@ -130,7 +130,7 @@ const BASE = {
   "equipo": {
     "foto": "assets/fotos/equipo.jpg",
     "titulo": "Nuestro equipo de trabajo",
-    "intro": "El equipo que forma parte de la Colegio Santo Tomás se caracteriza por:",
+    "intro": "El equipo que forma parte del Colegio Santo Tomás se caracteriza por:",
     "items": [
       {
         "titulo": "El trato cordial entre docentes, estudiantes y familias",
@@ -146,7 +146,7 @@ const BASE = {
       },
       {
         "titulo": "La comunicación asertiva",
-        "texto": "Saber a quién, cómo y por cuál medio comunicarse es una competencia indispensiable del siglo XXI. Buscamos la mejor forma de dialogar entre todos los que formamos parte de la escuela."
+        "texto": "Saber a quién, cómo y por cuál medio comunicarse es una competencia indispensiable del siglo XXI. Buscamos la mejor forma de dialogar entre todos los que formamos parte del colegio.\n"
       }
     ]
   },
@@ -163,7 +163,7 @@ const BASE = {
       "horario": {
         "foto": "assets/fotos/jornada.jpg",
         "titulo": "Horario",
-        "destacado": "La jornada escolar dura 7 horas, de 8 a 15hs.",
+        "destacado": "La jornada escolar de 7 horas, de 8 a 15hs.",
         "aclaracion": "Dentro de la jornada están la educación curricular obligatoria, el espacio de transición del comedor escolar y las asignaturas extracurriculares.",
         "parrafos": [
           "El objetivo de una Jornada Completa no es solamente asistir más tiempo a la escuela, sino realizar en el mismo espacio actividades deportivas, recreativas y artísticas junto a otros niños y niñas."
@@ -179,7 +179,7 @@ const BASE = {
           "Ciencias Sociales",
           "Educación Física",
           "Educación Artística",
-          "Inglés"
+          "Inglés (a partir de 4to año)"
         ]
       },
       "extracurriculares": {
@@ -226,7 +226,7 @@ const BASE = {
       },
       "comedor": {
         "titulo": "Comedor escolar",
-        "intro": "El comedor transcurre de 12 a 13hs, entre la jornada curricular del turno mañana y las materias extracurriculares del turno tarde.",
+        "intro": "El comedor transcurre de 12 a 12:45hs, entre la jornada curricular del turno mañana y las materias extracurriculares del turno tarde.",
         "items": [
           "Traer su vianda al ingresar a la escuela, que será servida caliente al momento del almuerzo.",
           "Adquirir el servicio de vianda escolar que ofrece el kiosco de la escuela."
@@ -317,8 +317,7 @@ const BASE = {
         "titulo": "Uniforme escolar",
         "texto": "El uniforme forma parte de nuestra identidad como escuela, además de ser de excelente calidad, con un diseño moderno y cómodo para que los niños y niñas realicen actividades escolares.",
         "fotos": [
-          "assets/fotos/uniforme-secundaria-1.jpg",
-          "assets/fotos/uniforme-secundaria-2.jpg"
+          "assets/fotos/uniforme-secundaria-1.jpg"
         ],
         "prendas": [
           "Chomba",
