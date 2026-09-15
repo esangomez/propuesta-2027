@@ -671,6 +671,7 @@ function render(){
   <section class="tinte" id="s-convivencia" style="--acento:var(--rojo)">
     <h2>${ed(rn+".convivencia.titulo")}</h2><div class="subrayado"></div>
     ${ed(rn+".convivencia.intro","p","entrada")}
+    ${marco(rn+".convivencia.foto")}
     ${puntos(rn+".convivencia.items", n.convivencia.items)}
     ${agregarBtn(rn+".convivencia.items","punto")}
   </section>` : ""}

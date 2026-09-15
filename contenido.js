@@ -292,18 +292,22 @@ const BASE = {
         "intro": "Además de las materias curriculares, la escuela ofrece una orientación propia y clubes optativos a contraturno.",
         "items": [
           {
+            "foto": "assets/fotos/orientacion-3d.jpg",
             "titulo": "Diseño e Impresión en 3D",
             "texto": "Durante el taller, los alumnos aprenderán el ciclo completo de producción: comenzarán con el modelado tridimensional en computadora, utilizarán software específico para procesar y configurar sus diseños (laminado), y finalmente operarán los equipos para materializar sus piezas."
           },
           {
+            "foto": "assets/fotos/orientacion-artes.jpg",
             "titulo": "Artes Visuales y Artes Dramáticas",
             "texto": "El taller propone un cruce entre la producción visual y la interpretación escénica. Los estudiantes trabajarán en dinámicas corporales, improvisación y construcción de personajes, al mismo tiempo que desarrollarán proyectos estéticos que acompañen esas narrativas, como el diseño escenográfico o la composición visual."
           },
           {
+            "foto": "assets/fotos/orientacion-marketing.jpg",
             "titulo": "Marketing Digital",
             "texto": "A través de esta materia, buscamos que los jóvenes dejen de ser únicamente espectadores de las plataformas digitales para convertirse en comunicadores críticos, capaces de planificar estrategias, crear contenido visual y textual, y comprender las lógicas detrás de los entornos digitales actuales. Se trata de una formación práctica y directamente aplicable al mundo profesional."
           },
           {
+            "foto": "assets/fotos/orientacion-robotica.jpg",
             "titulo": "Robótica",
             "texto": "La robótica ofrece a los jóvenes un entorno donde el error es parte del proceso de diseño, preparándolos con habilidades fundamentales tanto para sus estudios superiores como para los desafíos del mundo profesional actual."
           }
@@ -332,7 +336,8 @@ const BASE = {
           "El Consejo Institucional de Conviencia genera las pautas para las diversas situaciones referidas a la convencia de nuestros estudiantes.",
           "Por Ley Provincial hay restricción de uso de celulares durante la jornada escolar. Los estudiantes solo pueden usarlo para comprar en el kiosco durante el recreo.",
           "Fomentamos la participación estudiantil por medio del Cuerpo de Delegados. Creemos que los estudiantes de Nivel Secundario tienen voz y voto."
-        ]
+        ],
+        "foto": "assets/fotos/convivencia-secundaria.jpg"
       },
       "perfilEstudiante": {
         "titulo": "Nuestros estudiantes",
