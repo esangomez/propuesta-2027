@@ -310,53 +310,30 @@ p{margin:0 0 12px; max-width:60ch}
 
 /* ==========================================================
    Pantallas medianas y grandes
-   El celular es la base; acá el contenido se reparte a lo ancho
-   sin que las líneas de texto se vuelvan ilegibles.
+   Mismo diseño que en el celular, en una sola columna: solo se
+   ensancha el marco y se agranda un poco la tipografía, sin
+   reacomodar nada en varias columnas.
    ========================================================== */
 @media (min-width:700px){
-  .tira-fotos{grid-template-columns:1fr 1fr}
+  #doc{max-width:640px}
   section{padding:44px 40px 46px}
   .portada{padding:48px 40px 50px}
   h2{font-size:32px}
-  .contactos{grid-template-columns:1fr 1fr}
   .verano{padding:32px 30px}
 }
 
 @media (min-width:960px){
   body{font-size:17px}
-  #doc{max-width:1080px; box-shadow:0 0 0 1px var(--linea)}
+  #doc{max-width:760px; box-shadow:0 0 0 1px var(--linea)}
   section{padding:56px 56px 60px}
   h2{font-size:36px}
   .entrada{font-size:19px}
-
-  /* portada en dos columnas: el texto a la izquierda, el isotipo grande */
-  .portada{
-    display:grid; grid-template-columns:minmax(0,1fr) auto;
-    column-gap:48px; align-items:start; padding:64px 56px 66px;
-  }
-  .portada h1{grid-column:1; grid-row:1; font-size:64px}
-  .portada .anio{grid-column:1; grid-row:2; font-size:96px}
-  .portada .sello{grid-column:1; grid-row:3; width:auto; height:70px; margin:18px 0 0}
-  .portada .mosaico{grid-column:1; grid-row:4}
-  .portada .piezas{width:300px; right:-80px; top:-70px}
-
-  /* bloques que ganan al leerse en paralelo */
-  .grilla{display:grid; grid-template-columns:1fr 1fr; column-gap:32px}
   .banda-cita{padding:52px 56px 46px}
   .banda-cita blockquote{font-size:26px}
   .selector{padding:30px 56px 32px}
-  .portada .marco{grid-column:2; grid-row:1 / span 4; width:280px; align-self:center; margin:0}
-  .lista{display:grid; grid-template-columns:1fr 1fr; column-gap:36px}
-  .lista li:nth-last-child(2):nth-child(odd){border-bottom:0}
-  .verano .lista{column-gap:30px}
   .destacado{padding:26px 28px}
   .cierre{padding:56px 40px 60px}
   .cierre .frase{font-size:36px; max-width:20ch}
-}
-
-/* el texto nunca se estira más allá de lo cómodo de leer */
-@media (min-width:1140px){
-  #doc{max-width:1120px}
 }
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
