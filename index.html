@@ -47,6 +47,7 @@ body{
   background:var(--papel); color:var(--tinta);
   font-family:var(--tipo-texto); font-size:16.5px; line-height:1.6;
   -webkit-text-size-adjust:100%;
+  overflow-x:hidden;
 }
 #doc{max-width:760px; margin:0 auto; background:var(--blanco); position:relative; overflow:hidden}
 
@@ -161,7 +162,7 @@ p{margin:0 0 12px; max-width:60ch}
 
 .cierre{background:var(--azul); color:#fff; padding:38px 22px 42px; text-align:center}
 .cierre img{width:82px; height:82px; margin-bottom:18px; background:#fff; border-radius:22px; padding:8px}
-.cierre .frase{font-family:var(--tipo-mano); font-size:30px; line-height:1.2; max-width:16ch; margin:0 auto}
+.cierre .frase{font-family:var(--tipo-mano); font-size:clamp(17px,5.4vw,34px); line-height:1.25; max-width:94%; margin:0 auto}
 .cierre .autor{margin-top:8px; font-size:14px; color:rgba(255,255,255,.75)}
 .cierre .pie-datos{margin-top:24px; font-size:13px; color:rgba(255,255,255,.7); line-height:1.75}
 
@@ -331,7 +332,6 @@ p{margin:0 0 12px; max-width:60ch}
   .selector{padding:30px 56px 32px}
   .destacado{padding:26px 28px}
   .cierre{padding:56px 40px 60px}
-  .cierre .frase{font-size:36px; max-width:20ch}
 }
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
